@@ -5,17 +5,19 @@
   --bg-card-hover: rgba(255, 255, 255, 0.08);
   --text-primary: #ffffff;
   --text-secondary: #a1a1aa;
-  
-  --accent-primary: #3b82f6; /* Blue */
-  --accent-secondary: #8b5cf6; /* Purple */
+
+  --accent-primary: #3b82f6;
+  /* Blue */
+  --accent-secondary: #8b5cf6;
+  /* Purple */
   --accent-gradient: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-  
+
   --border-glass: rgba(255, 255, 255, 0.1);
   --glow: 0 0 20px rgba(59, 130, 246, 0.5);
 
   --font-main: 'Inter', sans-serif;
   --font-heading: 'Outfit', sans-serif;
-  
+
   --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
@@ -27,6 +29,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -36,16 +39,20 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   position: relative;
+  width: 100%;
 }
 
 /* Background Effects */
-.bg-glow-1, .bg-glow-2 {
+.bg-glow-1,
+.bg-glow-2 {
   position: fixed;
   border-radius: 50%;
   filter: blur(100px);
   z-index: -1;
   opacity: 0.4;
   animation: float 10s infinite alternate;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .bg-glow-1 {
@@ -66,12 +73,22 @@ body {
 }
 
 @keyframes float {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(50px, 50px) scale(1.1); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate(50px, 50px) scale(1.1);
+  }
 }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
   font-weight: 700;
   line-height: 1.2;
@@ -101,7 +118,9 @@ a {
 
 section {
   padding: 6rem 0;
-  min-height: calc(100vh - 80px); /* 80px for nav */
+  min-height: calc(100vh - 80px);
+  /* 80px for nav */
+  min-height: calc(100dvh - 80px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -240,7 +259,8 @@ nav {
   font-size: 1.5rem;
   color: var(--text-secondary);
   margin-bottom: 2rem;
-  min-height: 2.3rem; /* Prevents layout shift during typing */
+  min-height: 2.3rem;
+  /* Prevents layout shift during typing */
 }
 
 .hero-actions {
@@ -264,7 +284,8 @@ nav {
   height: 100%;
   object-fit: cover;
   border-radius: 1.5rem;
-  background-color: rgba(255, 255, 255, 0.05); /* Placeholder */
+  background-color: rgba(255, 255, 255, 0.05);
+  /* Placeholder */
 }
 
 /* Section Titles */
@@ -331,14 +352,15 @@ nav {
   transform: translateY(-5px);
   border-color: rgba(255, 255, 255, 0.2);
   background: var(--bg-card-hover);
-  box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
 }
 
 .project-img {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  background-color: rgba(255, 255, 255, 0.05); /* Placeholder */
+  background-color: rgba(255, 255, 255, 0.05);
+  /* Placeholder */
 }
 
 .project-info {
@@ -489,19 +511,22 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 992px) {
-  .hero, .about-grid, .contact-grid {
+
+  .hero,
+  .about-grid,
+  .contact-grid {
     grid-template-columns: 1fr;
     gap: 3rem;
   }
-  
+
   .hero {
     text-align: center;
   }
-  
+
   .hero-actions {
     justify-content: center;
   }
-  
+
   .hero-image-wrapper {
     max-width: 500px;
     margin: 0 auto;
@@ -512,22 +537,23 @@ footer {
   section {
     padding: 4rem 0;
   }
-  
+
   .hero-content h1 {
     font-size: 3rem;
   }
-  
+
   /* Mobile Nav */
   .nav-toggle {
     display: flex;
   }
-  
+
   .nav-links {
     position: fixed;
     top: 0;
     right: -100%;
     width: 250px;
     height: 100vh;
+    height: 100dvh;
     background: rgba(15, 15, 20, 0.95);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -536,24 +562,26 @@ footer {
     justify-content: center;
     transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     border-left: 1px solid var(--border-glass);
-    box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
   }
-  
+
   .nav-links.nav-open {
     right: 0;
   }
-  
+
   .nav-links a {
     font-size: 1.2rem;
   }
-  
+
   /* Hamburger Animation */
   .nav-toggle.open span:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
   }
+
   .nav-toggle.open span:nth-child(2) {
     opacity: 0;
   }
+
   .nav-toggle.open span:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
   }
@@ -563,11 +591,11 @@ footer {
   .hero-content h1 {
     font-size: 2.5rem;
   }
-  
+
   .hero-content .subtitle {
     font-size: 1.1rem;
   }
-  
+
   .contact-form {
     padding: 1.5rem;
   }
